@@ -17,8 +17,6 @@ public class Reader {
         double amount;
         FileReader fileReader = new FileReader("src/main/resources/transactions.csv");
         BufferedReader bufferedReader = new BufferedReader(fileReader);
-        //  FileWriter fileWriter = new FileWriter("src/main/resources/transactions.csv",true);
-        // BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
         while ((input = bufferedReader.readLine()) != null) {
             String[] transactionReader = input.split("\\|");
             if (!transactionReader[0].contains("date")) {

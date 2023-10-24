@@ -18,7 +18,7 @@ public class HomeScreen {
     Reader reader = new Reader();
 
     public static void homeScreen() throws IOException {
-        int userChoice;
+        String userChoice;
 
         do {
             System.out.println("Welcome to Stardust LLC! What can I help you with today?\n" +
@@ -26,25 +26,25 @@ public class HomeScreen {
                     "2) Display Ledger Screen\n" +
                     "3) Payments\n" +
                     "4) Exit the application ");
-            userChoice = myScanner.nextInt();
+            userChoice = myScanner.next();
             myScanner.nextLine();
             switch (userChoice) {
-                case 1:
+                case "1":
                     addDeposit();
                     break;
-                case 2:
+                case "2":
                     displayLedger();
                     break;
-                case 3:
+                case "3":
                     userPayment();
                     break;
-                case 4:
+                case "4":
                     System.exit(0);
                 default:
                     System.out.println("Please enter a valid option 1/2/3 ");
             }
         }
-        while (userChoice != 4);
+        while (!userChoice.equals("4"));
 
     }
 

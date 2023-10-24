@@ -39,9 +39,4 @@ public class Ledger {
         return this.amount;
     }
 
-    //for when I need to print out full list of (x) transaction
-    @Override
-    public String toString() {
-        return this.getDate() + "|" + this.getTime() + "|" + this.getDescription() + "|" + this.getVendor() + "|" + this.getAmount();
-    }
 }
