@@ -8,6 +8,8 @@ import java.time.format.DateTimeFormatter;
 import java.util.*;
 import java.io.*;
 
+import static com.pluralsight.DisplayLedger.displayLedger;
+
 
 public class HomeScreen {
     //created global variables to use in other classes and methods
@@ -33,7 +35,7 @@ public class HomeScreen {
                     addDeposit();
                     break;
                 case 2:
-                    //displayLedger();
+                    displayLedger();
                     break;
                 case 3:
                     userPayment();
@@ -64,10 +66,7 @@ public class HomeScreen {
             String date = String.valueOf(LocalDate.now());
             String time = fmt.format(LocalTime.now());
             //write into csv file
-            bufferedWriter.write(date + "|" + time + "|" + description + "|" + vendor + "|" + amount + "\n");
-            //store details into hashmap
-            ledgerHashMap.put(transactionId, new Ledger(date, time, description, vendor, amount));
-            transactionId++;
+            bufferedWriter.write(date + "|" + time + "|" + description + "|" + vendor + "|" + "$" + amount + "\n");
             System.out.println("Deposit has been recorded, Enter another deposit? Yes or No? ");
             String userInput = myScanner.next().trim().toLowerCase();
             if (!userInput.equals("yes")) {
@@ -90,16 +89,14 @@ public class HomeScreen {
             String vendor = myScanner.nextLine().trim();
             System.out.println("Lastly what was the amount? ");
             double amount = myScanner.nextDouble();
+            amount *= -1; //converts amount into a negative amount since it is a payment
             myScanner.nextLine();
             //format local dates
             String date = String.valueOf(LocalDate.now());
             String time = fmt.format(LocalTime.now());
             //write into csv file
-            bufferedWriter.write(date + "|" + time + "|" + description + "|" + vendor + "|" + "-" + amount + "\n");
-            //store details into hashmap
-            ledgerHashMap.put(transactionId, new Ledger(date, time, description, vendor, amount));
-            transactionId++;
-            System.out.println("Payments has been recorded, Enter another payments? Yes or No? ");
+            bufferedWriter.write(date + "|" + time + "|" + description + "|" + vendor + "|" + "$" + amount + "\n");
+            System.out.println("Payments has been recorded, Enter another payment? Yes or No? ");
             String userInput = myScanner.next().trim().toLowerCase();
             if (!userInput.equals("yes")) {
                 break;
@@ -111,12 +108,14 @@ public class HomeScreen {
     }
 
     public static void transactionLog() throws IOException {
-        //create readers/writers
+        //create variables
         String input;
-        String description;
-        String vendor;
-        double amount;
-
+        LocalDate dateCSV;
+        LocalTime timeCSV;
+        String descriptionCSV;
+        String vendorCSV;
+        double amountCSV;
+        //create readers/writers
         FileReader fileReader = new FileReader("src/main/resources/transactions.csv");
         BufferedReader bufferedReader = new BufferedReader(fileReader);
         FileWriter fileWriter = new FileWriter("src/main/resources/transactions.csv", true);
@@ -124,16 +123,18 @@ public class HomeScreen {
         while ((input = bufferedReader.readLine()) != null) {
             String[] transactionReader = input.split("\\|");
             if (!transactionReader[0].equals("date")) {
-                LocalDate dateCSV = LocalDate.parse(transactionReader[0]);
-                LocalTime timeCSV = LocalTime.parse(transactionReader[1]);
-                String descriptionCSV = transactionReader[2];
-                String vendorCSV = transactionReader[3];
-                double amountCSV = Double.parseDouble(transactionReader[4]);
+                dateCSV = LocalDate.parse(transactionReader[0]);
+                timeCSV = LocalTime.parse(transactionReader[1]);
+                descriptionCSV = transactionReader[2];
+                vendorCSV = transactionReader[3];
+                amountCSV = Double.parseDouble(transactionReader[4]);
+                //store details into hashmap
+                ledgerHashMap.put(transactionId, new Ledger(dateCSV, timeCSV, descriptionCSV, vendorCSV, amountCSV));
+                transactionId++;
             }
         }
         fileReader.close();
     }
-
 
 }
 

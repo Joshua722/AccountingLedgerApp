@@ -1,16 +1,9 @@
 date|time|description|vendor|amount
 2023-03-23|04:14|apples|store|14.14
-2024-12-24|10:32|appels|store|14.14
-||apples|store|14.14
-
-||oranges|store|14.14
-
+2024-12-24|10:32|apples|store|14.14
 2023-10-23|15:46:42|apples|store|14.14
-
 2023-10-23|15:46:55|black|beans|14.14
-
 2023-10-23|15:54:08||store|145.54
-
 2023-10-23|15:55:13||harris teeter|14.14
 2023-10-23|15:57:59||store and store|14.14
 2023-10-23|16:00:05||harris teeter|14.14
@@ -18,3 +11,5 @@ date|time|description|vendor|amount
 2023-10-23|16:03:44||beans|14.14
 2023-10-23|16:07:07|black beans and bacon|bean nation|14.14
 2023-10-23|16:38:04|ipad|apple|-400.43
+2023-10-24|08:55:19|cheese fingers|harris teeter|23.43
+2023-10-24|08:55:44|electric bill|duke energy|-91.43
