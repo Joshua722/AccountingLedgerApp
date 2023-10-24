@@ -21,7 +21,7 @@ public class DisplayLedger {
                     "1) Display all entries\n" +
                     "2) Display only deposits\n" +
                     "3) Display only payments\n" +
-                    "4) Go to a new screen to run a pre defined search filters\n" +
+                    "4) Go to a new screen to run pre defined search filters\n" +
                     "5) Home");
             userInput = myScanner.next();
             myScanner.nextLine();
@@ -115,8 +115,7 @@ public class DisplayLedger {
                     "5) Search by Vendor\n" +
                     "6) Exit to Ledger Screen\n" +
                     "0) Home");
-            userInput = myScanner.next();
-            myScanner.nextLine();
+            userInput = myScanner.nextLine();
             switch (userInput) {
                 case "1":
                     for (Ledger r : ledgerHashMap.values()) {
@@ -160,7 +159,7 @@ public class DisplayLedger {
                     break;
                 case "5":
                     System.out.println("Please input the vendor");
-                    userChoice = myScanner.next();
+                    userChoice = myScanner.nextLine();
                     boolean foundMatch = false;
                     for (Ledger r : ledgerHashMap.values()) {
                         String vendorChoice = r.getVendor();
@@ -173,7 +172,6 @@ public class DisplayLedger {
                     if (!foundMatch) {
                         System.out.println("That vendor is not listed in this file, if you would like to see all available options please view all transactions.");
                         System.out.println("Sending you back to Report Screen!");
-                        newReports();
                     }
                     break;
                 case "6":
