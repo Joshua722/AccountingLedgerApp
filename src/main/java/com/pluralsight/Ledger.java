@@ -17,8 +17,6 @@ public class Ledger {
         this.description = description;
         this.vendor = vendor;
         this.amount = amount;
-
-
     }
 
     public LocalDate getDate() {
