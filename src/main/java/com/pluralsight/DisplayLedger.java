@@ -119,9 +119,10 @@ public class DisplayLedger {
             switch (userInput) {
                 case "1":
                     for (Ledger r : ledgerHashMap.values()) {
+                        //this is getting the date from value in hashmap and comparing it to the current local time
                         LocalDate transactionDate = r.getDate();
                         Year transactionYear = Year.from(transactionDate);
-                        Month transactionMonth = r.getDate().getMonth();
+                        Month transactionMonth = transactionDate.getMonth();
                         if (transactionYear.equals(currentYear) && transactionMonth.equals(currentMonth)) {
                             System.out.printf("date|%s|time|%s|description|%s|vendor|%s|amount|$%.2f%n",
                                     transactionDate, r.getTime(), r.getDescription(), r.getVendor(), r.getAmount());
@@ -163,6 +164,8 @@ public class DisplayLedger {
                     System.out.println("Please input the vendor");
                     userChoice = myScanner.nextLine();
                     boolean foundMatch = false;
+                    //setting the foundMatch to false before for loop so that if it meets condition it can change it
+                    //then if not it will remain false and proceed
                     for (Ledger r : ledgerHashMap.values()) {
                         String vendorChoice = r.getVendor();
                         if (vendorChoice.equalsIgnoreCase(userChoice)) {
@@ -172,7 +175,8 @@ public class DisplayLedger {
                         }
                     }
                     if (!foundMatch) {
-                        System.out.println("That vendor is not listed in this file, if you would like to see all available options please view all transactions.");
+                        System.out.println("That vendor is not listed in this file, if you would like to see all" +
+                                " available options please view all transactions.");
                         System.out.println("Sending you back to Report Screen!");
                     }
                     break;

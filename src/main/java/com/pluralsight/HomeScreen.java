@@ -19,7 +19,6 @@ public class HomeScreen {
 
     public static void homeScreen() throws IOException {
         String userChoice;
-
         do {
             System.out.println("Welcome to Stardust LLC! What can I help you with today?\n" +
                     "1) Deposits\n" +
