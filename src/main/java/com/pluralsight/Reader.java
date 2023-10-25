@@ -13,9 +13,9 @@ public class Reader {
         String input;
         LocalDate dateCSV;
         LocalTime timeCSV;
-        String description;
-        String vendor;
-        double amount;
+        String descriptionCSV;
+        String vendorCSV;
+        double amountCSV;
         //create readers
         FileReader fileReader = new FileReader("src/main/resources/transactions.csv");
         BufferedReader bufferedReader = new BufferedReader(fileReader);
@@ -24,13 +24,13 @@ public class Reader {
             if (!transactionReader[0].contains("date")) {
                 dateCSV = LocalDate.parse(transactionReader[0]);
                 timeCSV = LocalTime.parse(transactionReader[1]);
-                String descriptionCSV = transactionReader[2];
-                String vendorCSV = transactionReader[3];
-                double amountCSV = Double.parseDouble(transactionReader[4]);
+                descriptionCSV = transactionReader[2];
+                vendorCSV = transactionReader[3];
+                amountCSV = Double.parseDouble(transactionReader[4]);
                 //store details into hashmap
                 ledgerHashMap.put(transactionId, new Ledger(dateCSV, timeCSV, descriptionCSV, vendorCSV, amountCSV));
                 transactionId++;
-                ledgerList = new ArrayList<>(ledgerHashMap.values());
+                ledgerList = new ArrayList<>(ledgerHashMap.values()); //can use ledgerList.sort later on
             }
         }
         bufferedReader.close();

@@ -10,11 +10,7 @@ import java.time.*;
 import static com.pluralsight.HomeScreen.*;
 
 public class DisplayLedger {
-    static Scanner myScanner = new Scanner(System.in);
-
-
     public static void displayLedger() throws IOException {
-
         //applied high order function
         Reader.Reader();
         String userInput;
@@ -29,7 +25,7 @@ public class DisplayLedger {
             myScanner.nextLine();
             switch (userInput) {
                 case "1":
-                    displayAll(ledgerListByDate(ledgerList));
+                    displayAll(ledgerListByDate(ledgerList)); //passing ledgerList as a parameter to the ledgerListByDate
                     break;
                 case "2":
                     displayDeposits(ledgerListByDate(ledgerList));
@@ -53,7 +49,10 @@ public class DisplayLedger {
     //create new method that will organize all data from newest to oldest that can be used be anywhere
     public static List<Ledger> ledgerListByDate(List<Ledger> ledgerlist) {
         // Sort the list in descending order based off date/time
-        Collections.sort(ledgerList, (r1, r2) -> {
+        //.sort retrieve data from ledgerList then compares them to each other and puts newer one first
+        //r is being assigned to the first object in Ledger(first line in ledgerList)
+        //in this case r1 is first object and r2 is second object (lambda expression)
+        ledgerList.sort((r1, r2) -> {
             LocalDateTime dateTime1 = LocalDateTime.of(r1.getDate(), r1.getTime());
             LocalDateTime dateTime2 = LocalDateTime.of(r2.getDate(), r2.getTime());
             return dateTime2.compareTo(dateTime1);
@@ -89,11 +88,11 @@ public class DisplayLedger {
     public static void newReports(List<Ledger> ledgerList) throws IOException {
         //creating variable to be used
         LocalDate currentDate = LocalDate.now();
-        Month currentMonth = currentDate.getMonth();
-        YearMonth currentYearMonth = YearMonth.from(currentDate); // grabs month from local date
+        Month currentMonth = currentDate.getMonth(); //grabs month from locale date
+        YearMonth currentYearMonth = YearMonth.from(currentDate); // grabs year and month from local date
         YearMonth previousYearMonth = currentYearMonth.minusMonths(1); // current month minus -1
-        Year currentYear = Year.from(currentDate);
-        Year previousYear = currentYear.minusYears(1);
+        Year currentYear = Year.from(currentDate); //grabs year from local date
+        Year previousYear = currentYear.minusYears(1); // grabs year of local time and minus 1 which gives you year before
         String userInput;
         String userChoice;
         do {

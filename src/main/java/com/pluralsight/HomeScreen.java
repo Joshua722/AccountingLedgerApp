@@ -16,7 +16,7 @@ public class HomeScreen {
     static int transactionId = 0;
     public static HashMap<Integer, Ledger> ledgerHashMap = new HashMap<Integer, Ledger>();
     public static List<Ledger> ledgerList = new ArrayList<>(ledgerHashMap.values());
-    Reader reader = new Reader();
+
     public static void homeScreen() throws IOException {
         String userChoice;
         do {
@@ -40,7 +40,7 @@ public class HomeScreen {
                 case "4":
                     System.exit(0);
                 default:
-                    System.out.println("Please enter a valid option 1/2/3 ");
+                    System.out.println("Please enter a valid option 1/2/3/4 ");
             }
         }
         while (!userChoice.equals("4"));
