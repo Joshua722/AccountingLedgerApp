@@ -120,7 +120,9 @@ public class DisplayLedger {
                 case "1":
                     for (Ledger r : ledgerHashMap.values()) {
                         LocalDate transactionDate = r.getDate();
-                        if (transactionDate.getMonth() == currentMonth) {
+                        Year transactionYear = Year.from(transactionDate);
+                        Month transactionMonth = r.getDate().getMonth();
+                        if (transactionYear.equals(currentYear) && transactionMonth.equals(currentMonth)) {
                             System.out.printf("date|%s|time|%s|description|%s|vendor|%s|amount|$%.2f%n",
                                     transactionDate, r.getTime(), r.getDescription(), r.getVendor(), r.getAmount());
                         }

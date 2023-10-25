@@ -1,34 +1,41 @@
 date|time|description|vendor|amount
-2021-02-15|04:23:32|bananas|lowes|91.32
-2023-03-23|04:14|apples|store|14.14
-2023-10-24|09:30:00|Purchase of groceries|Grocery Store|45.50
-2023-10-23|14:15:00|Gasoline refill|Gas Station|35.20
-2023-10-22|19:45:00|Dinner at a restaurant|Restaurant ABC|75.80
-2023-10-21|08:00:00|Salary deposit|My Company|2500.00
-2023-10-20|12:30:00|Online shopping|Online Retailer|120.99
-2022-09-15|10:45:00|Utility bill payment|Utility Company|90.00
-2022-08-10|16:20:00|Movie night|Cinema XYZ|30.50
+2023-10-24|09:30:00|Purchase of groceries|Grocery Store|-45.50
+2023-10-23|14:15:00|Gasoline refill|Gas Station|-35.20
+2023-09-22|19:45:00|Dinner at a restaurant|Restaurant ABC|-75.80
+2023-09-21|08:00:00|Salary deposit|My Company|2500.00
+2023-09-20|12:30:00|Online shopping|Online Retailer|-120.99
+2022-09-15|10:45:00|Utility bill payment|Utility Company|-90.00
+2022-08-10|16:20:00|Movie night|Cinema XYZ|-30.50
 2022-07-05|13:00:00|Health insurance payment|Insurance Co.|-150.00
 2023-10-24|14:25:52|cheese|fingers|-14.14
 2023-10-24|14:31:21|monitor|walmart|-432.42
 2023-10-24|14:44:00|Roth IRA|Vanguard|40000.0
 2023-10-24|14:44:17|Car Note|Honda|-432.42
-2022-05-10|15:45:30|Canned soup|Supermart|-3.99
-2022-09-08|10:15:45|Clothing purchase|Fashion Center|72.75
-2022-06-14|13:20|Laptop repair|Tech Solutions|100.00
-2022-07-30|11:55:22|Movie tickets|Cinema World|-25.00
-2022-11-05|18:30|Dinner with friends|Restaurant|60.75
-2021-12-19|07:40:15|Coffee|Cafe|5.25
-2023-02-02|14:20|Book purchase|Bookstore|-19.99
-2022-04-27|19:10:30|Phone bill|Telecom|40.00
-2022-08-18|08:15:45|Gasoline|Gas Station|-35.45
-2022-01-08|16:02|New shoes|Footwear Shop|55.00
-2023-05-07|21:30:10|Movie rental|Online Service|-9.99
-2022-03-12|12:45:20|Home improvement|Hardware Store|88.88
-2023-07-14|14:10|Healthcare expenses|Clinic|-75.00
-2021-06-25|09:55:40|Pizza delivery|Pizzeria|18.50
-2022-10-01|10:20:15|Music streaming subscription|Online Service|-9.99
-2023-01-30|17:30|Gym membership|Fitness Center|50.00
-2021-08-03|08:40:30|Electronics purchase|Electronics Store|-149.99
-2023-10-24|17:03:43|Roth IRA|Vanguard|200000.0
-2023-09-24|17:05:06|Surgery Knee|Atrium|-2000.0
+2022-05-10|15:45:30|Canned soup|Super mart|-3.99
+2022-09-08|10:15:45|Clothing purchase|Fashion Center|-72.75
+2021-10-05|11:55:22|Movie tickets|Cinema World|-25.00
+2021-09-15|18:30|Dinner with friends|Restaurant|-60.75
+2020-08-03|07:40:15|Coffee|Cafe|-5.25
+2020-05-20|14:20|Book purchase|Bookstore|-19.99
+2019-04-18|19:10:30|Phone bill|Telecom|-40.00
+2019-02-05|08:15:45|Gasoline|Gas Station|-35.45
+2018-11-12|16:02|New shoes|Footwear Shop|-55.00
+2017-09-22|21:30:10|Movie rental|Online Service|-9.99
+2016-06-10|12:45:20|Home improvement|Hardware Store|88.88
+2016-03-15|14:10|Healthcare expenses|Clinic|-75.00
+2015-02-18|09:55:40|Pizza delivery|Pizzeria|18.50
+2014-12-01|10:20:15|Music streaming subscription|Online Service|-9.99
+2014-01-03|17:30|Gym membership|Fitness Center|50.00
+2013-11-22|08:40:30|Electronics purchase|Electronics Store|-149.99
+2013-06-19|17:03:43|Roth IRA|Vanguard|200000.0
+2013-05-28|17:05:06|Surgery Knee|Atrium|-2000.0
+2013-03-14|08:45:21|Savings Account|Bank of America|5000.00
+2012-12-30|12:15:32|Checking Account|Chase Bank|2500.00
+2012-10-24|14:30:15|401(k) Plan|Fidelity Investments|10000.00
+2012-07-12|09:20:57|Credit Card|Citibank|1500.00
+2011-06-15|16:55:40|Student Loan|Navient|35000.00
+2011-04-30|10:10:05|Brokerage Account|Charles Schwab|75000.00
+2010-10-19|18:40:12|Emergency Fund|Ally Bank|10000.00
+2010-07-24|13:25:48|Home Mortgage|Wells Fargo|200000.00
+2009-04-18|11:50:29|Auto Loan|Capital One|15000.00
+2008-03-06|19:05:17|Health Savings Account|HSA Bank|3000.00
