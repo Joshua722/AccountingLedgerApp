@@ -15,6 +15,7 @@ public class HomeScreen {
     public static DateTimeFormatter fmt = DateTimeFormatter.ofPattern("HH:mm:ss");
     static int transactionId = 0;
     public static HashMap<Integer, Ledger> ledgerHashMap = new HashMap<Integer, Ledger>();
+    public static List<Ledger> ledgerList = new ArrayList<>(ledgerHashMap.values());
     Reader reader = new Reader();
 
     public static void homeScreen() throws IOException {

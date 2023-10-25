@@ -2,12 +2,15 @@ package com.pluralsight;
 
 import java.time.*;
 import java.io.*;
+import java.util.ArrayList;
+
 import static com.pluralsight.HomeScreen.*;
 
 public class Reader {
 
     public static void Reader() throws IOException {
-        ledgerHashMap.clear();
+        //refresh hashmap and accept new data
+
         //create readers/writers
         String input;
         LocalDate dateCSV;
@@ -28,6 +31,7 @@ public class Reader {
                 //store details into hashmap
                 ledgerHashMap.put(transactionId, new Ledger(dateCSV, timeCSV, descriptionCSV, vendorCSV, amountCSV));
                 transactionId++;
+                ledgerList = new ArrayList<>(ledgerHashMap.values());
             }
         }
         bufferedReader.close();

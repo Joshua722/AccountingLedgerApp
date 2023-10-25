@@ -1,7 +1,6 @@
 package com.pluralsight;
 
 import java.io.*;
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
@@ -27,18 +26,18 @@ public class DisplayLedger {
             myScanner.nextLine();
             switch (userInput) {
                 case "1":
-                    displayAll();
+                    displayAll(ledgerListByDate(ledgerList));
                     break;
                 case "2":
-                    displayDeposits();
+                    displayDeposits(ledgerListByDate(ledgerList));
                     break;
                 case "3":
-                    displayPayments();
+                    displayPayments(ledgerListByDate(ledgerList));
                     break;
                 case "4":
-                    newReports();
+                    newReports(ledgerListByDate(ledgerList));
                     break;
-                case "5":
+                case "5": homeScreen();
                     break;
                 default:
                     System.out.println("Please choose valid input");
@@ -47,30 +46,26 @@ public class DisplayLedger {
         } while (!userInput.equals("5"));
     }
 
-    public static void displayAll() throws IOException {
-        // get the values from hashmap and put into array list
-        List<Ledger> ledgerList = new ArrayList<>(ledgerHashMap.values());
+    //create new method that will organize all data from newest to oldest that can be used be anywhere
+    public static List<Ledger> ledgerListByDate(List<Ledger> ledgerlist) {
         // Sort the list in descending order based off date/time
         Collections.sort(ledgerList, (r1, r2) -> {
             LocalDateTime dateTime1 = LocalDateTime.of(r1.getDate(), r1.getTime());
             LocalDateTime dateTime2 = LocalDateTime.of(r2.getDate(), r2.getTime());
             return dateTime2.compareTo(dateTime1);
         });
-        for (Ledger r : ledgerList) {
+        return ledgerlist;
+    }
+
+    public static void displayAll(List<Ledger> ledgerList) throws IOException {
+
+        for (Ledger r : HomeScreen.ledgerList) {
             System.out.printf("date|%s|time|%s|description|%s|vendor|%s|amount|$%.2f%n",
                     r.getDate(), r.getTime(), r.getDescription(), r.getVendor(), r.getAmount());
         }
     }
 
-    public static void displayDeposits() throws IOException {
-        // get the values from hashmap and put into array list
-        List<Ledger> ledgerList = new ArrayList<>(ledgerHashMap.values());
-        // Sort the list in descending order based off date/time
-        Collections.sort(ledgerList, (r1, r2) -> {
-            LocalDateTime dateTime1 = LocalDateTime.of(r1.getDate(), r1.getTime());
-            LocalDateTime dateTime2 = LocalDateTime.of(r2.getDate(), r2.getTime());
-            return dateTime2.compareTo(dateTime1);
-        });
+    public static void displayDeposits(List<Ledger> ledgerList) throws IOException {
         for (Ledger r : ledgerList) {
             if (r.getAmount() > 0) {
                 System.out.printf("date|%s|time|%s|description|%s|vendor|%s|amount|$%.2f%n",
@@ -79,15 +74,7 @@ public class DisplayLedger {
         }
     }
 
-    public static void displayPayments() throws IOException {
-        // get the values from hashmap and put into array list
-        List<Ledger> ledgerList = new ArrayList<>(ledgerHashMap.values());
-        // Sort the list in descending order based off date/time
-        Collections.sort(ledgerList, (r1, r2) -> {
-            LocalDateTime dateTime1 = LocalDateTime.of(r1.getDate(), r1.getTime());
-            LocalDateTime dateTime2 = LocalDateTime.of(r2.getDate(), r2.getTime());
-            return dateTime2.compareTo(dateTime1);
-        });
+    public static void displayPayments(List<Ledger> ledgerList) throws IOException {
         for (Ledger r : ledgerList) {
             if (r.getAmount() < 0) {
                 System.out.printf("date|%s|time|%s|description|%s|vendor|%s|amount|$%.2f%n",
@@ -96,7 +83,7 @@ public class DisplayLedger {
         }
     }
 
-    public static void newReports() throws IOException {
+    public static void newReports(List<Ledger> ledgerList) throws IOException {
         //creating variable to be used
         LocalDate currentDate = LocalDate.now();
         Month currentMonth = currentDate.getMonth();
@@ -118,7 +105,7 @@ public class DisplayLedger {
             userInput = myScanner.nextLine();
             switch (userInput) {
                 case "1":
-                    for (Ledger r : ledgerHashMap.values()) {
+                    for (Ledger r : ledgerList) {
                         //this is getting the date from value in hashmap and comparing it to the current local time
                         LocalDate transactionDate = r.getDate();
                         Year transactionYear = Year.from(transactionDate);
@@ -130,7 +117,7 @@ public class DisplayLedger {
                     }
                     break;
                 case "2":
-                    for (Ledger r : ledgerHashMap.values()) {
+                    for (Ledger r : ledgerList) {
                         //grabbing the month from transaction date that is grabbing it from the CSV file
                         LocalDate transactionDate = r.getDate();
                         YearMonth transactionYearMonth = YearMonth.from(transactionDate);
@@ -141,7 +128,7 @@ public class DisplayLedger {
                     }
                     break;
                 case "3":
-                    for (Ledger r : ledgerHashMap.values()) {
+                    for (Ledger r : ledgerList) {
                         LocalDate transactionDate = r.getDate();
                         Year transactionYear = Year.from(transactionDate);
                         if (transactionYear.equals(currentYear)) {
@@ -151,7 +138,7 @@ public class DisplayLedger {
                     }
                     break;
                 case "4":
-                    for (Ledger r : ledgerHashMap.values()) {
+                    for (Ledger r : ledgerList) {
                         LocalDate transactionDate = r.getDate();
                         Year transactionYear = Year.from(transactionDate);
                         if (transactionYear.equals(previousYear)) {
@@ -184,6 +171,7 @@ public class DisplayLedger {
                     displayLedger();
                     break;
                 case "0":
+                    homeScreen();
                     break;
                 default:
                     System.out.println("Please input a valid choice!");
