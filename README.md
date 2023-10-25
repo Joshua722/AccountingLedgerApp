@@ -44,14 +44,6 @@ The main class coordinates all functions. In this example, only two classes are 
 
 ![Main Class](https://github.com/Joshua722/AccountingLedgerApp/assets/101982787/426b4425-ae3c-43ac-bac9-eb4d2c028884)
 
-## Conclusion
-
-Overall, this project has improved my skills in working with CSV files, HashMaps, and ArrayLists. I have enhanced my understanding of LocalDateTime and practiced working with collections like ArrayList. While not an expert, I find these tools practical and valuable.
-
-One interesting piece of code is in the newReports method. In case 5, I implemented a vendor search, displaying matching transactions. It uses a boolean to track success and includes an "else if" to handle cases when no matches are found.
-
-![Vendor Search](https://github.com/Joshua722/AccountingLedgerApp/assets/101982787/666b2cb0-b133-447f-81fe-d9e3b0d99d61)
-
 ## Application Screens
 
 ### Home Screen
@@ -135,6 +127,14 @@ If a vendor is not found, users receive a notification:
 ![Vendor Not Found](https://github.com/Joshua722/AccountingLedgerApp/assets/101982787/ffc74550-6adc-4ac4-8615-293eb981465d)
 
 These are the primary screens and options available in the Accounting Ledger App.
+
+## Conclusion
+
+Overall, this project has improved my skills in working with CSV files, HashMaps, and ArrayLists. I have enhanced my understanding of LocalDateTime and practiced working with collections like ArrayList. While not an expert, I find these tools practical and valuable.
+
+One interesting piece of code is in the newReports method. In case 5, I implemented a vendor search, displaying matching transactions. It uses a boolean to track success and includes an "else if" to handle cases when no matches are found.
+
+![Vendor Search](https://github.com/Joshua722/AccountingLedgerApp/assets/101982787/666b2cb0-b133-447f-81fe-d9e3b0d99d61)
 
 
 
