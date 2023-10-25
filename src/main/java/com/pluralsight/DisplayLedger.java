@@ -1,6 +1,7 @@
 package com.pluralsight;
 
 import java.io.*;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
@@ -13,6 +14,8 @@ public class DisplayLedger {
 
 
     public static void displayLedger() throws IOException {
+
+        //applied high order function
         Reader.Reader();
         String userInput;
         do {
@@ -37,7 +40,8 @@ public class DisplayLedger {
                 case "4":
                     newReports(ledgerListByDate(ledgerList));
                     break;
-                case "5": homeScreen();
+                case "5":
+                    homeScreen();
                     break;
                 default:
                     System.out.println("Please choose valid input");
@@ -58,8 +62,7 @@ public class DisplayLedger {
     }
 
     public static void displayAll(List<Ledger> ledgerList) throws IOException {
-
-        for (Ledger r : HomeScreen.ledgerList) {
+        for (Ledger r : ledgerList) {
             System.out.printf("date|%s|time|%s|description|%s|vendor|%s|amount|$%.2f%n",
                     r.getDate(), r.getTime(), r.getDescription(), r.getVendor(), r.getAmount());
         }
@@ -87,8 +90,8 @@ public class DisplayLedger {
         //creating variable to be used
         LocalDate currentDate = LocalDate.now();
         Month currentMonth = currentDate.getMonth();
-        YearMonth currentYearMonth = YearMonth.from(currentDate);
-        YearMonth previousYearMonth = currentYearMonth.minusMonths(1);
+        YearMonth currentYearMonth = YearMonth.from(currentDate); // grabs month from local date
+        YearMonth previousYearMonth = currentYearMonth.minusMonths(1); // current month minus -1
         Year currentYear = Year.from(currentDate);
         Year previousYear = currentYear.minusYears(1);
         String userInput;
@@ -153,7 +156,7 @@ public class DisplayLedger {
                     boolean foundMatch = false;
                     //setting the foundMatch to false before for loop so that if it meets condition it can change it
                     //then if not it will remain false and proceed
-                    for (Ledger r : ledgerHashMap.values()) {
+                    for (Ledger r : ledgerList) {
                         String vendorChoice = r.getVendor();
                         if (vendorChoice.equalsIgnoreCase(userChoice)) {
                             System.out.printf("date|%s|time|%s|description|%s|vendor|%s|amount|$%.2f%n",

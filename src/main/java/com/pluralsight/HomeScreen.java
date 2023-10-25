@@ -17,7 +17,6 @@ public class HomeScreen {
     public static HashMap<Integer, Ledger> ledgerHashMap = new HashMap<Integer, Ledger>();
     public static List<Ledger> ledgerList = new ArrayList<>(ledgerHashMap.values());
     Reader reader = new Reader();
-
     public static void homeScreen() throws IOException {
         String userChoice;
         do {

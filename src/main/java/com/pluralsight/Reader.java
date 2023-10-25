@@ -9,15 +9,14 @@ import static com.pluralsight.HomeScreen.*;
 public class Reader {
 
     public static void Reader() throws IOException {
-        //refresh hashmap and accept new data
-
-        //create readers/writers
+        ledgerHashMap.clear(); // clear hashmap so that it refreshes it constantly
         String input;
         LocalDate dateCSV;
         LocalTime timeCSV;
         String description;
         String vendor;
         double amount;
+        //create readers
         FileReader fileReader = new FileReader("src/main/resources/transactions.csv");
         BufferedReader bufferedReader = new BufferedReader(fileReader);
         while ((input = bufferedReader.readLine()) != null) {
