@@ -4,29 +4,33 @@ This project allows users to record financial transactions and manage data in a 
 
 ## Screenshots
 
-![Home Screen](https://github.com/Joshua722/AccountingLedgerApp/assets/101982787/aa38c2dc-225a-4a2e-bc04-35b484b46673)
+### Home Screen
 
 The home screen is the initial interface users see. It offers a range of options, including adding deposits and payments.
 
-![Home Screen Options](https://github.com/Joshua722/AccountingLedgerApp/assets/101982787/acb24391-c34b-4ebb-bab0-532b7e7e058e)
+![Home Screen](https://github.com/Joshua722/AccountingLedgerApp/assets/101982787/8985d364-fd0f-42bb-b48a-0b8240593c05)
 
 Here are the methods available in the HomeScreen class.
 
 ![Home Screen Methods](https://github.com/Joshua722/AccountingLedgerApp/assets/101982787/c2371713-6e41-47ea-b7f2-6d0a76bc160d)
 
+### DisplayLedger
+
 In the DisplayLedger class, users can display all transactions, filter by deposits or payments, and choose to return to the home screen or proceed to a report screen.
 
-![DisplayLedger Options](https://github.com/Joshua722/AccountingLedgerApp/assets/101982787/bc372ed4-48dd-47c0-bcd0-1275e8c3ebe6)
+![DisplayLedger Options](https://github.com/Joshua722/AccountingLedgerApp/assets/101982787/a8bf1df0-74ca-4f73-abc7-0dbafd3b5320)
 
 Here are the methods available in the DisplayLedger class.
 
-![DisplayLedger Methods](https://github.com/Joshua722/AccountingLedgerApp/assets/101982787/a67143c1-ee48-4443-8fc7-06176332113f)
+![DisplayLedger Methods](https://github.com/Joshua722/AccountingLedgerApp/assets/101982787/a1c99db0-edd2-461f-868f-59322a3b680b)
 
 Methods available include displayLedger, displayAll, displayDeposits, displayPayments, and newReports.
 
 ## New Reports
 
 The newReports method provides predefined filters that users can apply to transactions. It utilizes a foreach loop to iterate through the HashMap and apply filters based on local date/time.
+
+![New Reports](https://github.com/Joshua722/AccountingLedgerApp/assets/101982787/0811bdbb-6391-4a33-bf54-8d4a77fc8758)
 
 In the Ledger class, variables are defined, and a constructor is created for later use when printing data.
 
@@ -36,13 +40,13 @@ In the Ledger class, variables are defined, and a constructor is created for lat
 
 The Reader class handles file reading, using file readers and buffered readers to read the CSV file and later use a buffered writer.
 
-![Reader Class](https://github.com/Joshua722/AccountingLedgerApp/assets/101982787/3de35b7c-0809-4a6a-b902-87437a792789)
+![Reader Class](https://github.com/Joshua722/AccountingLedgerApp/assets/101982787/052e55c7-a7b7-40df-a302-9d7970bbe89e)
 
 ![Reader Methods](https://github.com/Joshua722/AccountingLedgerApp/assets/101982787/9c3821f2-c3dc-472b-8597-40e351fac205)
 
 The main class coordinates all functions. In this example, only two classes are used, which handle the rest of the functionality.
 
-![Main Class](https://github.com/Joshua722/AccountingLedgerApp/assets/101982787/426b4425-ae3c-43ac-bac9-eb4d2c028884)
+![Main Class](https://github.com/Joshua722/AccountingLedgerApp/assets/101982787/0cf4d87e-4a17-4015-a3a1-4c7f60f7b5da)
 
 ## Application Screens
 
@@ -132,18 +136,8 @@ These are the primary screens and options available in the Accounting Ledger App
 
 Overall, this project has improved my skills in working with CSV files, HashMaps, and ArrayLists. I have enhanced my understanding of LocalDateTime and practiced working with collections like ArrayList. While not an expert, I find these tools practical and valuable.
 
-One interesting piece of code is in the newReports method. In case 5, I implemented a vendor search, displaying matching transactions. It uses a boolean to track success and includes an "else if" to handle cases when no matches are found.
+One interesting piece of code is in the newReports method. In case 5, I implemented a vendor search, displaying matching transactions. It uses a boolean to track success and includes an "if" to handle cases when no matches are found.
 
-![Vendor Search](https://github.com/Joshua722/AccountingLedgerApp/assets/101982787/666b2cb0-b133-447f-81fe-d9e3b0d99d61)
+### Vendor Search
 
-
-
-
-
-
-
-
-
-
-
-
+![Vendor Search](https://github.com/Joshua722/AccountingLedgerApp/assets/101982787/8a4cff3d-66a0-4cf8-b9aa-fd1d3d213615)
