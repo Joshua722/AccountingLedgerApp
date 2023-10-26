@@ -7,9 +7,16 @@ import java.time.*;
 import static com.pluralsight.HomeScreen.*;
 
 public class DisplayLedger {
+    public static LocalDate currentDate = LocalDate.now();
+    public static Month currentMonth = currentDate.getMonth(); //grabs month from locale date
+    public static YearMonth currentYearMonth = YearMonth.from(currentDate); // grabs year and month from local date
+    public static YearMonth previousYearMonth = currentYearMonth.minusMonths(1); // current month minus -1
+    public static Year currentYear = Year.from(currentDate); //grabs year from local date
+    public static Year previousYear = currentYear.minusYears(1); // grabs year of local time and minus 1 which gives you year before
+
     public static void displayLedger() throws IOException {
-        //applied high order function
-        Reader.Reader(); //call reader again, it refreshes previous data from HomeScreen inputs
+        //call reader again, it refreshes previous data from HomeScreen inputs
+        Reader.fileReader();
         String userInput;
         do {
             System.out.println("""
@@ -19,8 +26,9 @@ public class DisplayLedger {
                     3) Display only payments
                     4) Go to a new screen to run pre defined search filters
                     5) Home""");
-            userInput = myScanner.next();
-            myScanner.nextLine().trim();
+            userInput = myScanner.next().trim();
+            myScanner.nextLine();
+            //applied high order function
             switch (userInput) {
                 case "1":
                     displayAll(ledgerListByDate(ledgerList)); //passing ledgerList as a parameter to the ledgerListByDate
@@ -84,13 +92,6 @@ public class DisplayLedger {
     }
 
     public static void newReports(ArrayList<Ledger> ledgerList) throws IOException {
-        //creating variable to be used
-        LocalDate currentDate = LocalDate.now();
-        Month currentMonth = currentDate.getMonth(); //grabs month from locale date
-        YearMonth currentYearMonth = YearMonth.from(currentDate); // grabs year and month from local date
-        YearMonth previousYearMonth = currentYearMonth.minusMonths(1); // current month minus -1
-        Year currentYear = Year.from(currentDate); //grabs year from local date
-        Year previousYear = currentYear.minusYears(1); // grabs year of local time and minus 1 which gives you year before
         String userInput;
         String userChoice;
         do {
@@ -119,7 +120,7 @@ public class DisplayLedger {
                     break;
                 case "2":
                     for (Ledger r : ledgerList) {
-                        //grabbing the month from transaction date that is grabbing it from the CSV file
+                        //grabbing the month from transaction date that is grabbing it from the Ledger objects
                         LocalDate transactionDate = r.getDate();
                         YearMonth transactionYearMonth = YearMonth.from(transactionDate);
                         if (transactionYearMonth.equals(previousYearMonth)) {
@@ -178,7 +179,6 @@ public class DisplayLedger {
                     System.out.println("Please input a valid choice!");
                     break;
             }
-
         } while (!userInput.equals("0"));
     }
 }

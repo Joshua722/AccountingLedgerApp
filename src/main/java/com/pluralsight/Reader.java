@@ -8,7 +8,7 @@ import static com.pluralsight.HomeScreen.*;
 
 public class Reader {
 
-    public static void Reader() throws IOException {
+    public static void fileReader() throws IOException {
         ledgerHashMap.clear(); // clear hashmap so that it refreshes it constantly
         String input;
         LocalDate dateCSV;

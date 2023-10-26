@@ -8,12 +8,12 @@ import java.io.*;
 
 import static com.pluralsight.DisplayLedger.*;
 
-
 public class HomeScreen {
     //created global variables to use in other classes and methods
-    static Scanner myScanner = new Scanner(System.in);
-    public static DateTimeFormatter fmt = DateTimeFormatter.ofPattern("HH:mm:ss");
-    static int transactionId = 0;
+    public static Scanner myScanner = new Scanner(System.in);
+    public static DateTimeFormatter timeFMT = DateTimeFormatter.ofPattern("HH:mm:ss");
+    public static DateTimeFormatter dateFMT = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+    public static int transactionId = 0;
     public static HashMap<Integer, Ledger> ledgerHashMap = new HashMap<Integer, Ledger>();
     public static ArrayList<Ledger> ledgerList = new ArrayList<>(ledgerHashMap.values());
 
@@ -61,8 +61,8 @@ public class HomeScreen {
             double amount = myScanner.nextDouble();
             myScanner.nextLine();
             //format local dates
-            String date = String.valueOf(LocalDate.now());
-            String time = fmt.format(LocalTime.now());
+            String date = dateFMT.format(LocalDate.now());
+            String time = timeFMT.format(LocalTime.now());
             //write into csv file
             bufferedWriter.newLine();
             bufferedWriter.write(date + "|" + time + "|" + description + "|" + vendor + "|" + amount);
@@ -89,8 +89,8 @@ public class HomeScreen {
             myScanner.nextLine();
             amount *= -1; //converts amount into a negative amount since it is a payment
             //format local dates
-            String date = String.valueOf(LocalDate.now());
-            String time = fmt.format(LocalTime.now());
+            String date = dateFMT.format(LocalDate.now());
+            String time = timeFMT.format(LocalTime.now());
             //write into csv file
             bufferedWriter.newLine();
             bufferedWriter.write(date + "|" + time + "|" + description + "|" + vendor + "|" + amount);
