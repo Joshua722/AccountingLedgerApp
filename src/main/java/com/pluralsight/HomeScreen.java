@@ -15,16 +15,17 @@ public class HomeScreen {
     public static DateTimeFormatter fmt = DateTimeFormatter.ofPattern("HH:mm:ss");
     static int transactionId = 0;
     public static HashMap<Integer, Ledger> ledgerHashMap = new HashMap<Integer, Ledger>();
-    public static List<Ledger> ledgerList = new ArrayList<>(ledgerHashMap.values());
+    public static ArrayList<Ledger> ledgerList = new ArrayList<>(ledgerHashMap.values());
 
     public static void homeScreen() throws IOException {
         String userChoice;
         do {
-            System.out.println("Welcome to Stardust LLC! What can I help you with today?\n" +
-                    "1) Deposits\n" +
-                    "2) Display Ledger Screen\n" +
-                    "3) Payments\n" +
-                    "4) Exit the application ");
+            System.out.println("""
+                    Welcome to Stardust LLC! What can I help you with today?
+                    1) Deposits
+                    2) Display Ledger Screen
+                    3) Payments
+                    4) Exit the application""");
             userChoice = myScanner.next();
             myScanner.nextLine();
             switch (userChoice) {
@@ -43,7 +44,7 @@ public class HomeScreen {
                     System.out.println("Please enter a valid option 1/2/3/4 ");
             }
         }
-        while (!userChoice.equals("4"));
+        while (true);
 
     }
 

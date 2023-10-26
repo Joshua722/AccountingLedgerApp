@@ -2,9 +2,6 @@ package com.pluralsight;
 
 import java.io.*;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Scanner;
 import java.time.*;
 
 import static com.pluralsight.HomeScreen.*;
@@ -12,17 +9,18 @@ import static com.pluralsight.HomeScreen.*;
 public class DisplayLedger {
     public static void displayLedger() throws IOException {
         //applied high order function
-        Reader.Reader();
+        Reader.Reader(); //call reader again, it refreshes previous data from HomeScreen inputs
         String userInput;
         do {
-            System.out.println("What would you like to do?\n" +
-                    "1) Display all entries\n" +
-                    "2) Display only deposits\n" +
-                    "3) Display only payments\n" +
-                    "4) Go to a new screen to run pre defined search filters\n" +
-                    "5) Home");
+            System.out.println("""
+                    What would you like to do?
+                    1) Display all entries
+                    2) Display only deposits
+                    3) Display only payments
+                    4) Go to a new screen to run pre defined search filters
+                    5) Home""");
             userInput = myScanner.next();
-            myScanner.nextLine();
+            myScanner.nextLine().trim();
             switch (userInput) {
                 case "1":
                     displayAll(ledgerListByDate(ledgerList)); //passing ledgerList as a parameter to the ledgerListByDate
@@ -47,7 +45,7 @@ public class DisplayLedger {
     }
 
     //create new method that will organize all data from newest to oldest that can be used be anywhere
-    public static List<Ledger> ledgerListByDate(List<Ledger> ledgerlist) {
+    public static ArrayList<Ledger> ledgerListByDate(ArrayList<Ledger> ledgerList) {
         // Sort the list in descending order based off date/time
         //.sort retrieve data from ledgerList then compares them to each other and puts newer one first
         //r is being assigned to the first object in Ledger(first line in ledgerList)
@@ -57,17 +55,17 @@ public class DisplayLedger {
             LocalDateTime dateTime2 = LocalDateTime.of(r2.getDate(), r2.getTime());
             return dateTime2.compareTo(dateTime1);
         });
-        return ledgerlist;
+        return ledgerList;
     }
 
-    public static void displayAll(List<Ledger> ledgerList) throws IOException {
+    public static void displayAll(ArrayList<Ledger> ledgerList) {
         for (Ledger r : ledgerList) {
             System.out.printf("date|%s|time|%s|description|%s|vendor|%s|amount|$%.2f%n",
                     r.getDate(), r.getTime(), r.getDescription(), r.getVendor(), r.getAmount());
         }
     }
 
-    public static void displayDeposits(List<Ledger> ledgerList) throws IOException {
+    public static void displayDeposits(ArrayList<Ledger> ledgerList) {
         for (Ledger r : ledgerList) {
             if (r.getAmount() > 0) {
                 System.out.printf("date|%s|time|%s|description|%s|vendor|%s|amount|$%.2f%n",
@@ -76,7 +74,7 @@ public class DisplayLedger {
         }
     }
 
-    public static void displayPayments(List<Ledger> ledgerList) throws IOException {
+    public static void displayPayments(ArrayList<Ledger> ledgerList) {
         for (Ledger r : ledgerList) {
             if (r.getAmount() < 0) {
                 System.out.printf("date|%s|time|%s|description|%s|vendor|%s|amount|$%.2f%n",
@@ -85,7 +83,7 @@ public class DisplayLedger {
         }
     }
 
-    public static void newReports(List<Ledger> ledgerList) throws IOException {
+    public static void newReports(ArrayList<Ledger> ledgerList) throws IOException {
         //creating variable to be used
         LocalDate currentDate = LocalDate.now();
         Month currentMonth = currentDate.getMonth(); //grabs month from locale date
@@ -96,14 +94,15 @@ public class DisplayLedger {
         String userInput;
         String userChoice;
         do {
-            System.out.println("Here is the Report screen options\n" +
-                    "1) Month to Date\n" +
-                    "2) Previous Month\n" +
-                    "3) Year to Date\n" +
-                    "4) Previous Year\n" +
-                    "5) Search by Vendor\n" +
-                    "6) Exit to Ledger Screen\n" +
-                    "0) Home");
+            System.out.println(""" 
+                    Here are the Report screen options
+                    1) Month to Date
+                    2) Previous Month
+                    3) Year to Date
+                    4) Previous Year
+                    5) Search by Vendor
+                    6) Exit to Ledger Screen
+                    0) Home""");
             userInput = myScanner.nextLine();
             switch (userInput) {
                 case "1":
@@ -151,7 +150,7 @@ public class DisplayLedger {
                     break;
                 case "5":
                     System.out.println("Please input the vendor");
-                    userChoice = myScanner.nextLine();
+                    userChoice = myScanner.nextLine().trim();
                     boolean foundMatch = false;
                     //setting the foundMatch to false before for loop so that if it meets condition it can change it
                     //then if not it will remain false and proceed
